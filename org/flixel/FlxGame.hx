@@ -247,7 +247,7 @@ class FlxGame extends Sprite
     {
         if (!Silent)
         {
-            FlxG.play(SndBeep);
+            FlxG.play("assets/beep" + #if web "mp3" #else "ogg" #end );
         }
         _soundTrayTimer = 1;
         _soundTray.y = 0;

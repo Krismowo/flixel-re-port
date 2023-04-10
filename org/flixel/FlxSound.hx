@@ -119,14 +119,14 @@ class FlxSound extends FlxBasic
     /**
 		 * The FlxSound constructor gets all the variables initialized, but NOT ready to play a sound yet.
 		 */
-    public function new(soundFile:String = null, looped:Bool = false, AutoDestroy:Bool = false):FlxSound
+    public function new(soundFile:String = null, looped:Bool = false, AutoDestroy:Bool = false)
     {
         super();
         createSound();
 		if (soundFile != null){
-			return loadEmbedded(soundFile, looped);
+			loadEmbedded(soundFile, looped);
 		}
-		return this;
+		//return this;
     }
     
     /**
@@ -289,7 +289,7 @@ class FlxSound extends FlxBasic
     {
         stop();
         createSound();
-        _sound = Assets.loadSound(EmbeddedSound);
+        _sound = Assets.getSound(EmbeddedSound);
 		//trace(_sound);
         //NOTE: can't pull ID3 info from embedded sound currently
         _looped = Looped;
