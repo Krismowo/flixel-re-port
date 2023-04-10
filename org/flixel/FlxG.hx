@@ -2,6 +2,7 @@ package org.flixel;
 
 import flash.errors.Error;
 import haxe.Constraints.Function;
+import openfl.Assets;
 import openfl.display.BitmapData;
 import openfl.display.Graphics;
 import openfl.display.Sprite;
@@ -799,12 +800,12 @@ class FlxG
 		 *
 		 * @return	The <code>BitmapData</code> we just created.
 		 */
-    public static function addBitmap(Graphic : Class<Dynamic>, Reverse : Bool = false, Unique : Bool = false, Key : String = null) : BitmapData
+    public static function addBitmap(Graphic:String, Reverse : Bool = false, Unique : Bool = false, Key : String = null) : BitmapData
     {
         var needReverse : Bool = false;
         if (Key == null)
         {
-            Key = Type.getClassName(Graphic) + ((Reverse) ? "_REVERSE_" : "");
+            Key = Graphic + ((Reverse) ? "_REVERSE_" : "");
             if (Unique && checkBitmapCache(Key))
             {
                 var inc : Int = 0;
@@ -823,16 +824,17 @@ class FlxG
         //If there is no data for this key, generate the requested graphic
         if (!checkBitmapCache(Key))
         {
-            Reflect.setField(_cache, Key, (Type.createInstance(Graphic, [])));
+            Reflect.setField(_cache, Key, Assets.getBitmapData(Graphic));
             if (Reverse)
             {
                 needReverse = true;
             }
         }
         var pixels : BitmapData = Reflect.field(_cache, Key);
-        if (!needReverse && Reverse && (pixels.width == (Type.createInstance(Graphic, [])).bitmapData.width))
+        if (!needReverse && Reverse)
         {
-            needReverse = true;
+			//if(pixels.width == Assets.getBitmapData(Graphic).bitmapData.width){
+			needReverse = true;
         }
         if (needReverse)
         {

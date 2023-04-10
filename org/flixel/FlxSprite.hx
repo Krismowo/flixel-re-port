@@ -170,7 +170,7 @@ class FlxSprite extends FlxObject
 		 * @param	Y				The initial Y position of the sprite.
 		 * @param	SimpleGraphic	The graphic you want to display (OPTIONAL - for simple stuff only, do NOT use for animated images!).
 		 */
-	public function new(X : Float = 0, Y : Float = 0, SimpleGraphic : Class<Dynamic> = null)
+	public function new(X : Float = 0, Y : Float = 0, SimpleGraphic:String = null)
 	{
 		super(X, Y);
 
@@ -204,7 +204,7 @@ class FlxSprite extends FlxObject
 
 		if (SimpleGraphic == null)
 		{
-			SimpleGraphic = ImgDefault;
+			SimpleGraphic = "assets/default.png";
 		}
 		loadGraphic(SimpleGraphic);
 	}
@@ -255,7 +255,7 @@ class FlxSprite extends FlxObject
 		 *
 		 * @return	This FlxSprite instance (nice for chaining stuff together, if you're into that).
 		 */
-	public function loadGraphic(Graphic : Class<Dynamic>, Animated : Bool = false, Reverse : Bool = false, Width : Int = 0, Height : Int = 0, Unique : Bool = false) : FlxSprite
+	public function loadGraphic(Graphic:String, Animated : Bool = false, Reverse : Bool = false, Width : Int = 0, Height : Int = 0, Unique : Bool = false) : FlxSprite
 	{
 		_bakedRotation = 0;
 		_pixels = FlxG.addBitmap(Graphic, Reverse, Unique); 
@@ -312,7 +312,7 @@ class FlxSprite extends FlxObject
 		 *
 		 * @return	This FlxSprite instance (nice for chaining stuff together, if you're into that).
 		 */
-	public function loadRotatedGraphic(Graphic : Class<Dynamic>, Rotations : Int = 16, Frame : Int = -1, AntiAliasing : Bool = false, AutoBuffer : Bool = false) : FlxSprite
+	public function loadRotatedGraphic(Graphic:String, Rotations : Int = 16, Frame : Int = -1, AntiAliasing : Bool = false, AutoBuffer : Bool = false) : FlxSprite
 	//Create the brush and canvas
 	{
 

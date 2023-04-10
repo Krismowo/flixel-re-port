@@ -21,10 +21,6 @@ import org.flixel.system.FlxTilemapBuffer;
 	 */
 class FlxTilemap extends FlxObject
 {
-	@:meta(Embed(source="data/autotiles.png"))
-	public static var ImgAuto : Class<Dynamic>;
-	@:meta(Embed(source="data/autotiles_alt.png"))
-	public static var ImgAutoAlt : Class<Dynamic>;
 
 	/**
 		 * No auto-tiling.
@@ -196,7 +192,7 @@ class FlxTilemap extends FlxObject
 		 *
 		 * @return	A pointer this instance of FlxTilemap, for chaining as usual :)
 		 */
-	public function loadMap(MapData : String, TileGraphic : Class<Dynamic>, TileWidth : Int = 0, TileHeight : Int = 0, AutoTile : Int = OFF, StartingIndex : Int = 0, DrawIndex : Int = 1, CollideIndex : Int = 1) : FlxTilemap
+	public function loadMap(MapData : String, TileGraphic:String , TileWidth : Int = 0, TileHeight : Int = 0, AutoTile : Int = OFF, StartingIndex : Int = 0, DrawIndex : Int = 1, CollideIndex : Int = 1) : FlxTilemap
 	{
 		auto = AutoTile;
 		_startingIndex = StartingIndex;
